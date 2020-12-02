@@ -15,6 +15,8 @@ with open('day2.txt') as input:
         pass_string = individual_pass_list[2].rstrip()
         parsed_current_pass.append({'first': first_num, 'second': second_num, 'character': character, 'string': str(pass_string)})
 
+#part 1
+
 def meets_philosphy(lst):
     count = 0
     for i in lst:
@@ -25,5 +27,22 @@ def meets_philosphy(lst):
         if char_count >= int(i['first']) and char_count <= int(i['second']):
             count += 1
     return count
-print(meets_philosphy(parsed_current_pass))
+#print(meets_philosphy(parsed_current_pass))
 
+#part2
+
+def updated_philosophy(lst):
+    count = 0
+    for i in lst:
+        pass_string = i['string']
+        first_index = int(i['first']) -1
+        second_index =  int(i['second']) - 1
+        if pass_string[first_index] == i['character'] and pass_string[second_index] != i['character']:
+            count += 1
+        elif pass_string[first_index] != i['character'] and pass_string[second_index] == i['character']:
+            count += 1
+    print(count)
+
+
+
+# updated_philosophy(parsed_current_pass)
